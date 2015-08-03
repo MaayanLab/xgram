@@ -4,6 +4,8 @@ def main():
 	load_chikungunya_data()
 
 def load_chikungunya_data():
+	import json_scripts
+	import numpy as np
 
 	# initialize network data 
 	mat = {}
@@ -14,8 +16,8 @@ def load_chikungunya_data():
 	# open file
 	filename = 'virus_chikungunya/log2_heavy_light_matrix.txt'
 	f = open(filename, 'r')
-
 	lines = f.readlines()
+	f.close()
 
 	for i in range(len(lines)):
 		inst_line = lines[i].strip().split('\t')
@@ -49,17 +51,34 @@ def load_chikungunya_data():
 				# get the row labels 
 				mat['nodes']['row'].append(inst_name)
 
+				# save values 
+				###################
+				inst_values = inst_line[1:]
 
-	print('\n')
-	print(mat['nodes']['col'])
-	print('\n')
-	print(mat['nodes']['row'])
+				# transfer values to floats
+				inst_values = [float(x) for x in inst_values]
+
+				# transfer to numpy array 
+				inst_values = np.asarray(inst_values)
+
+				# transfer values to matrix 
+				if i == 1:
+					mat['mat'] = inst_values
+				else:
+					mat['mat'] = np.vstack((mat['mat'],inst_values))
 
 
-		# print(inst_line)
+	print('col')
+	print(len(mat['nodes']['col']))
+	print('row')
+	print(len(mat['nodes']['row']))
+	print('shape matrix')
+	print(mat['mat'].shape)
 
-	f.close()
+	# convert matrix to list and save to json
+	mat['mat'] = mat['mat'].tolist()
 
+	json_scripts.save_to_json(mat,'chik_log2.json','no-indent')
 
 # run main
 main()
