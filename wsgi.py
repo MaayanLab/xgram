@@ -1,1 +1,1 @@
-from cstgram.app import app as application
+from chikungunya_kea.app import app as application
