@@ -10,3 +10,24 @@
 
 	Zichen
 		Average linkage, Euclidean distance. 	
+
+
+	My Findings
+		Some of the most commonly down-regulated genes are KRT1/KRT10, which are related to skin disease. The chik virus can sometimes cause a rash. 	
+
+		Commonly down-regulated genes 
+			KRT10
+			KTR1
+			LUM
+			ITIH3
+			C3
+			AFP
+			KRT5
+			C9
+			KRT2
+			LGALS3
+			FBLN1
+			COPS3
+			CD82
+			HNRNPL
+			KARS

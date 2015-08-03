@@ -103,7 +103,7 @@ function load_tfsub_clustergram(){
 			'row_label':'Kinases',
 			'col_label':'Transcription Factors',
 		  'outer_margins': outer_margins,
-		  'input_domain':1,
+		  'input_domain':1.5
 		};
 
 		//!! define mock res_color_dict

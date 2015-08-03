@@ -23,9 +23,9 @@ def make_chik_log2_clust():
 	import numpy as np
 	import d3_clustergram
 
-	# # quick attempt to fix recursion error
-	# import sys
-	# sys.setrecursionlimit(10000)
+	# quick attempt to fix recursion error
+	import sys
+	sys.setrecursionlimit(10000)
 
 	# load chik_log2 data and convert to array
 	chik = json_scripts.load_to_dict('chik_log2.json')
@@ -35,11 +35,15 @@ def make_chik_log2_clust():
 	print('replace nans with zeros')
 	chik['mat'] = np.nan_to_num(chik['mat'])
 
+	# filter the matrix to only include rows/cols that have
+	# values above a certain thresh n times 
+	chik['mat'], chik['nodes'] = d3_clustergram.filter_sim_mat(chik['mat'],chik['nodes'],0.25,2)
+
 	print(chik['mat'].shape)
 
 	# define parameters
-	compare_cutoff = 0.5
-	min_num_compare = 2
+	compare_cutoff = 0.01
+	min_num_compare = 3
 
 	# cluster rows and columns 
 	print('calculating clustering')
