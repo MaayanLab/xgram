@@ -1,6 +1,5 @@
 # This module contains functions that will be run manually 
 def main():
-	print('running manual functions')
 
 	# # generate json of tf and target genes 
 	# save_tf_targets_union_json('union')
@@ -12,8 +11,48 @@ def main():
 	# # make clustergram of gene expression correlated with TF expression 
 	# make_gene_exp_corr_with_tf_exp()
 
-	# make expression clustergrams 
-	make_expression_clustergrams()
+	# # make expression clustergrams 
+	# make_expression_clustergrams()
+
+	# make chik_log2 clustergram
+	make_chik_log2_clust()
+
+# make chik_log2 clustergram
+def make_chik_log2_clust():
+	import json_scripts
+	import numpy as np
+	import d3_clustergram
+
+	# # quick attempt to fix recursion error
+	# import sys
+	# sys.setrecursionlimit(10000)
+
+	# load chik_log2 data and convert to array
+	chik = json_scripts.load_to_dict('chik_log2.json')
+	chik['mat'] = np.asarray(chik['mat'])
+
+	# temporarily replace nans with zeros
+	print('replace nans with zeros')
+	chik['mat'] = np.nan_to_num(chik['mat'])
+
+	print(chik['mat'].shape)
+
+	# define parameters
+	compare_cutoff = 0.5
+	min_num_compare = 2
+
+	# cluster rows and columns 
+	print('calculating clustering')
+	clust_order = d3_clustergram.cluster_row_and_column( chik['nodes'], chik['mat'], 'cosine', compare_cutoff, min_num_compare )
+
+	print('finished calculating clustering')
+
+	# write the d3_clustergram 
+	base_path = 'static/networks/'
+	full_path = base_path + 'example_network.json'
+
+	# write the clustergram 
+	d3_clustergram.write_json_single_value( chik['nodes'], clust_order, chik['mat'], full_path)
 
 
 # make multiple CCLE NSCLC expression clustergrams 

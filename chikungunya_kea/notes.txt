@@ -8,4 +8,5 @@
 	It looks like the row wrapping the main view was causing the scrolling bug. 
 
 
-	
+	Zichen
+		Average linkage, Euclidean distance. 	
