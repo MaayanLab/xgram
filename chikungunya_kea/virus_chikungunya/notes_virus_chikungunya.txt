@@ -1,0 +1,7 @@
+notes virus chikungunya
+	Avi wants Zichen and myself to process this data. Zichen has started and sent me a processed version of the original data (original data Avi data.xlsx) - processed data is log2_heavy_light_matrix.txt. The data is protein level expression, not phosphorylation data, however, Avi wants me to do KEA on the data. I can also do X2K and visualize both together. 
+
+	I can do a few quick things. First, I can cluster and visualize the primary data, which Zichen has already done. Secone, I can run KEA and X2K and visualize the results for the different treatments in a clustergram. This will be pretty easy to get together. I could make another flask app for this and deploy it when I have some figures. 
+
+making website - 8-3-2015
+	Going to make website with view of original data and enriched kinases. 
