@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href='/cstgram/'>
+
+    <title>CSTgram</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/lib/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/custom.css">
+    <!-- for jquery sliders -->
+    <link rel="stylesheet" href="static/lib/css/jquery-ui.css">
+
+</head>
+
+<body>
+
+
+
+    <!-- hold_views - holds all views -->
+    <div id='hold_views' >
+
+      <!-- homepage -->
+      <div id='homepage_view' class='row'>
+
+        <h1 id='website_title'> CST NSCLC </h1>
+        <p class='initial_paragraph'>This webpage gives multiple views of the CST NSCLC PTM and gene expression data. </p>
+
+        <!-- choose protein class  -->
+        <div id='class_buttons' class="btn-group-vertical text-center" data-toggle="buttons" >
+          <button id='toggle_view' type="submit" class='btn btn-primary buttons' onClick='to_ccle_gene_exp()' >
+            Gene Expression Data 
+          </button>
+
+          <button id='toggle_view' type="submit" class='btn btn-primary buttons' onClick='tf_sub_all_cl();'  >
+            View TFs and downstream genes
+          </button>
+
+          <!-- <button id='toggle_view' type="submit" class='btn btn-primary buttons' onClick='console.log("here")' >
+            View Predicted TFs from ChEA
+          </button> -->
+        </div>
+
+      </div>
+      <!-- end homepage -->
+
+      <!-- visualization -->
+      <div id='viz_container'>
+
+        <!-- clust instruct container -->
+        <div id='clust_instruct_container' >
+          <h1 id='viz_website_title' onClick='to_homepage()' >CST NSCLC</h1>
+
+          <div class='viz_instruct_text'> The clustergram shows gene expression data for 29 NSCLC cell lines available from the CCLE. Gene expression has been Z-sore normalized across all cancer cell lines in the CCLE (approximately 1000 cell lines in total). The initial view shows gene expression from all gene types that have a zscore absolute value of at least 3.5 in at least one cell line. You can switch the zscore cutoff and gene subtypes using the buttons. </div>              
+
+          <!-- toggle clustergram order -->
+          <div id='toggle_order' class="btn-group" data-toggle="buttons" >
+            <label class="btn btn-primary active order_name" onclick="d3_clustergram.reorder_clust_rank('clust');">
+              <input type="radio" name="options" id="clust_button" autocomplete="off" checked > Cluster
+            </label>
+            <label class="btn btn-primary order_name" onclick="d3_clustergram.reorder_clust_rank('rank');">
+              <input type="radio" name="options" id="rank_button" autocomplete="off" > Rank
+            </label>
+            <label class="btn btn-primary order_name" onclick="d3_clustergram.reorder_clust_rank('class');">
+              <input type="radio" name="options" id="class_button" autocomplete="off" > Class
+            </label>
+          </div>
+
+          <!-- input box for gene search -->
+          <div id='gene_search_container' class='row'>
+              <input id='gene_search_box' type="text" class="form-control" placeholder="Input Gene" aria-describedby="sizing-addon2">
+              <div id='gene_search_button' class="btn-group" data-toggle="buttons" >
+                <label id='submit_gene_button' class="btn btn-primary active " onclick="d3_clustergram.find_gene_in_clust();">
+                  <input type="radio" name="options" id="" autocomplete="off" checked > Search
+                </label>
+              </div>
+          </div>
+          <p>set column group size</p>
+          <div id="slider_col"></div>
+          <p>set column group size</p>
+          <div id="slider_row"></div>
+
+        </div>
+        <!-- end clust instruct container -->
+        
+        <!-- svg_div - visualization will be put here -->
+        <div id='svg_div' class='svg_div' ></div>
+      </div>
+
+
+    </div>
+
+
+  <!-- original position for svg  -->
+
+
+  <!-- footer -->
+  <footer id='footer_div' class="footer navbar-fixed-bottom">
+    <div class="row" > 
+      <div class="col-xs-12 footer_section"> 
+        <p class="text-muted">CSTgram is being developed by the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a>. </p>
+      </div>
+    </div>
+  </footer>
+  <!-- end footer -->
+
+  <!-- Required JS Libraries -->
+  <script src="static/lib/js/d3.js"></script>
+  <script src="static/lib/js/jquery-1.11.2.min.js"></script>
+  <script src="static/lib/js/jquery-ui.js"></script>
+  <script src="static/lib/js/underscore-min.js"></script>
+  <script src="static/lib/js/underscore.strings.js"></script>
+  <script src='static/lib/js/blockUI.js'></script>
+
+  <!-- d3_clustergram.js -->
+  <script src='static/js/d3_clustergram.js'></script>
+  <!-- use d3_clustergram.js to load clustergram -->
+  <script src='static/js/load_network.js'></script>
+
+  <!-- set up group size sliders -->
+  <script type="text/javascript">
+  
+    // slider script - col 
+    $(function() {
+      $( "#slider_col" ).slider({
+        value:0.5,
+        min: 0,
+        max: 1,
+        step: 0.1,
+        slide: function( event, ui ) {
+          $( "#amount" ).val( "$" + ui.value );
+          var inst_index = ui.value*10;
+
+          // save slider value to global variable 
+          d3_clustergram.params.group_level.col = ui.value*10 ;
+
+          // change group size of col 
+          d3.selectAll('.col_class_rect')
+            .style('fill', function(d){
+              return d3_clustergram.params.group_colors.col[d.group[inst_index]];
+            });
+        }
+      });
+      $( "#amount" ).val( "$" + $( "#slider_col" ).slider( "value" ) );
+    });
+
+    // slider script - row
+    $(function() {
+      $( "#slider_row" ).slider({
+        value:0.5,
+        min: 0,
+        max: 1,
+        step: 0.1,
+        slide: function( event, ui ) {
+          $( "#amount" ).val( "$" + ui.value );
+          var inst_index = ui.value*10;
+
+          // save slider value to global variable 
+          d3_clustergram.params.group_level.row = ui.value*10 ;
+
+          // change group size of row
+          d3.selectAll('.row_class_rect')
+            .style('fill', function(d){
+              return d3_clustergram.params.group_colors.row[d.group[inst_index]];
+            });
+        }
+      });
+      $( "#amount" ).val( "$" + $( "#slider_row" ).slider( "value" ) );
+    });
+
+  </script>
+
+</body>
+
+</html>

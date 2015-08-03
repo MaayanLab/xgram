@@ -1,0 +1,117 @@
+                  <h1 id='viz_website_title' onClick='to_homepage()' >CST NSCLC</h1>
+
+                  <div id='viz_gmt_labels'></div>
+
+                  <div class='title_viz_instructs'>About:</div>
+                  <div class='viz_instruct_text'> The clustergram shows gene expression data for 29 NSCLC cell lines available from the CCLE. Gene expression has been Z-sore normalized across all cancer cell lines in the CCLE (approximately 1000 cell lines in total). The initial view shows gene expression from all gene types that have a zscore absolute value of at least 3.5 in at least one cell line. You can switch the zscore cutoff and gene subtypes using the buttons. </div>
+
+                  <div class='viz_instruct_text'> Cell lines are broken into three groups based on transcription factor gene expression - labeled red, blue and gray. The blue cluster is characterized by low expression of SMARCA4 and the red cluster is characterized by increased expression of NKX2-1.</div>
+
+                  <!-- button container -->
+                  <div id='button_container'>
+                    
+                    <!-- choose protein class  -->
+                    <div id='class_buttons' class="btn-group-vertical text-center" data-toggle="buttons" >
+
+                      <label class="btn btn-warning active prot_class" onclick="change_class_clustergram('ALL');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > All Genes
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('TF');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Transcription Factors
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('KIN');">
+                        <input type="radio" name="options" id="clust_button" autocomplete="off" checked > Kinases
+                      </label>
+
+                      <label class="btn btn-primary  prot_class" onclick="change_class_clustergram('PP');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Phosphatases
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('ACT');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Acetyltransferases
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('DACT');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Deacetylases
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('MET');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Methyltransferases
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('DMET');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Demethylases
+                      </label>
+
+                      <label class="btn btn-primary  prot_class" onclick="change_class_clustergram('GPCR');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > GPCRs
+                      </label>
+
+                      <label class="btn btn-primary prot_class" onclick="change_class_clustergram('IC');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Ion Channels
+                      </label>
+
+                    </div>
+
+                    <!-- choose zscore cutoff  -->
+                    <div id='class_buttons' class="btn-group-vertical text-center" data-toggle="buttons" >
+
+                      <label id='z_0' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(0);" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 0.0
+                      </label>
+
+                      
+                      <label id='z_20' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(2);" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 2.0
+                      </label>
+
+
+                      <label id='z_25' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(2.5);" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 2.5
+                      </label>
+
+
+                      <label id='z_30' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(3);" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 3.0
+                      </label>
+
+
+                      <label id='z_35' class="z_button btn btn-primary active  prot_class" onclick="change_zscore_clustergram(3.5);" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 3.5
+                      </label>
+
+
+                      <label id='z_40' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(4);" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" >4.0
+                      </label>
+
+                    </div>
+
+                    <div id='toggle_order' class="btn-group" data-toggle="buttons" >
+                      <label class="btn btn-primary active prot_class" onclick="d3_clustergram.params['order']='clust'; d3_clustergram.reorder_clust_rank();">
+                        <input type="radio" name="options" id="clust_button" autocomplete="off" checked > Cluster
+                      </label>
+                      <label class="btn btn-primary prot_class" onclick="d3_clustergram.params['order']='rank'; d3_clustergram.reorder_clust_rank();">
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > Rank
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- resource key -->
+                  <div id='res_color_key_title' class='title_viz_instructs'>Cell Line Groups:</div>
+                  <div id='res_color_key_div'></div>
+
+                  <!-- input box for gene search -->
+                  <div id='gene_search_container' class='row'>
+                      <input id='gene_search_box' type="text" class="form-control" placeholder="Input Gene" aria-describedby="sizing-addon2">
+
+                      <div id='gene_search_button' class="btn-group" data-toggle="buttons" >
+                        <label id='submit_gene_button' class="btn btn-primary active " onclick="d3_clustergram.find_gene_in_clust();">
+                          <input type="radio" name="options" id="" autocomplete="off" checked > Search
+                        </label>
+                      </div>
+                  </div>
+
+                  <button id='to_homepage' type="submit" class='btn btn-primary buttons' onClick='to_homepage()' >Return to Homepage</button>

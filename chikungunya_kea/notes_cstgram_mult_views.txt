@@ -1,0 +1,22 @@
+cstgram mult views 
+8-3-2015
+	I worked on the d3_clustergram.js code here. I will now revert back to the old index.html in order to continue working on the website and figures for cst. I will temporarily checkout an old version of the code to copy the index.html, then copy it to the current version. I'm going to revert to commit, which is shown in the context of other commits ending with the first commit where I started to clean up the visualization code:
+
+		ac1e567 working on correlation matrix tf-target view for 7-20-2015 CST meeting
+
+		df037b9 cleaning up visualizaion code
+		c45a983 renamed cell tile
+		c0a2e22 making group out of cells, will rename tiles, the group contains the rectangle and the highlighting rectangle
+->	working on correlation matrix tf-target view for 7-20-2015 CST meeting
+		12403dd set up for local development after deploying on 6-10-2015
+		5996c8b deployed cstgram, going to work on harmonogram and then add more views
+		ab918a8 changed app.py for docker development
+		d49b684 going to push a public version, need to dockerize
+		c4aa341 going to recalculate the similarity matrices using the threshold version of cosine distance that will prevent similarity based on low values from having too large of an infliuence
+		4e8240c have some similarity clustergrams working for tfs and kinases/phosphatases. I have applied numerous filters to improve cosine distance clustering. I need to see if the threshold version of cosine clustering changes the original clustergrams
+		15e3be6 visualization bug with few columns
+		130e3a8 calculated some tf gene expression vs top 100 sim and antisim genes, moving onto gene vs tf correlation, I will do this with the different gene categories
+		bbf35e3 almost have simple version of multiple views working, using different svg divs to swap out different visualizations, currently only expression div is working
+		7695f2a have two tf and correlated gene examples working, highlighting known target genes when the information is available
+		7113b46 have example tf correlated expression map working, need to highlight known downstream genes
+		599fe4a going to precalculate the tf clustergrams, it takes too long to make a clustergram for each tf and I o

@@ -1,0 +1,11 @@
+7-23-2015
+	I need to get the visualization to resize on window size change in a more modular manner. 
+
+	First, I need to remove unnecessary params.screen_width/height instances in the code. 
+
+	I will add in a module into d3_clustergram that will get the screen size on screen change to make it easier for the user to set up a visualization that dynamically fills the screen. 
+
+	It looks like the row wrapping the main view was causing the scrolling bug. 
+
+
+	
