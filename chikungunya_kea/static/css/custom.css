@@ -600,7 +600,7 @@ because the sidebar will be closed*/
   margin: 0 auto;
   color:#333;
   text-align: left;
-  margin-top: 0px;
+  margin-top: 5px;
   /*padding-top:5px;*/
   /*margin-bottom: 5px;*/
   font-size: 17px;
@@ -844,6 +844,8 @@ look like the input gene list text title*/
 .btn{
   padding-top:2px;
   padding-bottom:2px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 #submit_gene_button{

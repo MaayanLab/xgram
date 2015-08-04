@@ -65,11 +65,11 @@ function change_zscore_clustergram(inst_zscore_cutoff){
 
 };
 
-function load_tfsub_clustergram(){
+function load_chik_cutoff(inst_cutoff){
 
 		// switch view: remove class and zscore buttons 
 		d3.select('#class_buttons').style('display','none');
-		d3.select('#zscore_buttons').style('display','none');
+		// d3.select('#zscore_buttons').style('display','none');
 
 		// set up wait message before request is made 
 		$.blockUI({ css: { 
@@ -83,7 +83,7 @@ function load_tfsub_clustergram(){
 		    } });
 
 	//!! temporary change to test similarity matrix 
-	d3.json('/chikungunya_kea/static/networks/example_network.json', function(network_data){
+	d3.json('/chikungunya_kea/static/networks/chik_cutoff_'+inst_cutoff+'.json', function(network_data){
 
 
 		// new way of making clustergram 
@@ -93,7 +93,7 @@ function load_tfsub_clustergram(){
 		    'top':10,
 		    'bottom':40,
 		    'left':180,
-		    'right':70
+		    'right':50
 		  };
 
 		// define arguments object 
@@ -103,7 +103,7 @@ function load_tfsub_clustergram(){
 			'row_label':'Genes',
 			'col_label':'Samples',
 		  'outer_margins': outer_margins,
-		  'input_domain':1.5
+		  'input_domain':1
 		};
 
 		//!! define mock res_color_dict

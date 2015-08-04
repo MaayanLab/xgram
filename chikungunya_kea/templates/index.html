@@ -143,36 +143,33 @@
 
                     </div>
 
-                    <!-- choose zscore cutoff  -->
-                    <div id='zscore_buttons' class="btn-group-vertical text-center" data-toggle="buttons" >
+                    <div class='title_viz_instructs'>Choose log2 cutoff:</div>
 
-                      <label id='z_0' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(0);" >
+                    <!-- choose zscore cutoff  -->
+                    <div id='zscore_buttons' class="btn-group text-center" data-toggle="buttons" >
+
+                      <label id='z_0' class="z_button btn btn-primary prot_class" onclick="load_chik_cutoff('0.0');" >
                         <input type="radio" name="options" id="rank_button" autocomplete="off" > 0.0
                       </label>
 
                       
-                      <label id='z_20' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(2);" >
-                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 2.0
+                      <label id='z_20' class="z_button btn btn-primary prot_class" onclick="load_chik_cutoff('0.25');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 0.25
                       </label>
 
 
-                      <label id='z_25' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(2.5);" >
-                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 2.5
+                      <label id='z_25' class="z_button btn btn-primary prot_class" onclick="load_chik_cutoff('0.5');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 0.5
                       </label>
 
 
-                      <label id='z_30' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(3);" >
-                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 3.0
+                      <label id='z_30' class="z_button btn btn-primary prot_class" onclick="load_chik_cutoff('0.75');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 0.75
                       </label>
 
 
-                      <label id='z_35' class="z_button btn btn-primary active  prot_class" onclick="change_zscore_clustergram(3.5);" >
-                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 3.5
-                      </label>
-
-
-                      <label id='z_40' class="z_button btn btn-primary prot_class" onclick="change_zscore_clustergram(4);" >
-                        <input type="radio" name="options" id="rank_button" autocomplete="off" >4.0
+                      <label id='z_35' class="z_button btn btn-primary active  prot_class" onclick="load_chik_cutoff('1.0');" >
+                        <input type="radio" name="options" id="rank_button" autocomplete="off" > 1.0
                       </label>
 
                     </div>
@@ -202,9 +199,10 @@
                       </div>
                   </div>
 
-                  <p>set column group size</p>
+                  <div class='title_viz_instructs'>Set group size:</div>
+                  <div class='viz_instruct_text'>column group size</div>
                   <div id="slider_col"></div>
-                  <p>set column group size</p>
+                  <div class='viz_instruct_text'>row group size</div>
                   <div id="slider_row"></div>
 
                   <button id='to_homepage' type="submit" class='btn btn-primary buttons' onClick='to_homepage()' >Return to Homepage</button>
@@ -372,7 +370,7 @@
     // select current visualization div 
     select_svg_div = 'svg_div_tfsub';  
 
-    load_tfsub_clustergram();
+    load_chik_cutoff('1.0');
 
   }
 

@@ -1,6 +1,6 @@
 # d3_clustergram.py has functions that will generate a d3 clustergram 
 
-def write_json_single_value(nodes, clust_order, mat, full_path, link_hl = {}):
+def write_json_single_value(nodes, clust_order, mat, full_path, row_class={}, col_class={}, link_hl={} ):
 	import json
 	import json_scripts
 	import d3_clustergram
@@ -8,9 +8,6 @@ def write_json_single_value(nodes, clust_order, mat, full_path, link_hl = {}):
 	# initialize dict
 	d3_json = d3_clustergram.ini_d3_json()
 
-	# load gene class information from harmonogram 
-	gc = json_scripts.load_to_dict('gene_classes_harmonogram.json')
-	
 	# generate distance cutoffs 
 	all_dist = []
 	for i in range(11):
@@ -37,8 +34,7 @@ def write_json_single_value(nodes, clust_order, mat, full_path, link_hl = {}):
 		inst_dict['value'] = random.random()
 
 		# add class information 
-		inst_dict['class'] = str(round(random.random()))
-
+		inst_dict['class'] = row_class[nodes['row'][i]]
 
 		# append dictionary 
 		d3_json['row_nodes'].append(inst_dict)
@@ -61,7 +57,7 @@ def write_json_single_value(nodes, clust_order, mat, full_path, link_hl = {}):
 		inst_dict['value'] = random.random()
 
 		# add class information 
-		inst_dict['class'] = str(round(random.random()))
+		inst_dict['class'] = col_class[nodes['col'][i]]
 
 		# append dictionary 
 		d3_json['col_nodes'].append(inst_dict)

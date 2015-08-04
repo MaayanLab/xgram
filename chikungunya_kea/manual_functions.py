@@ -14,24 +14,25 @@ def main():
 	# # make expression clustergrams 
 	# make_expression_clustergrams()
 
-	# # chik specific code 
-	# #########################
-	# # make chik_log2 clustergram
-	# make_chik_log2_clust()
+	# chik specific code 
+	#########################
+	# make chik_log2 clustergram
+	cutoffs = [0.0,0.25,0.5, 0.75,1.0]
+	# cutoffs = [1.0]
+	for inst_cutoff in cutoffs:
+		make_chik_log2_clust(inst_cutoff)
 
-	# check protein class of diff proteins 
-	check_chik_prot_class()
+	# # check protein class of diff proteins 
+	# check_chik_prot_class()
 
-def check_chik_prot_class():
+def check_chik_prot_class(chik):
 	import json_scripts
 
 	# load gene class information from harmonogram 
 	gc = json_scripts.load_to_dict('gene_classes_harmonogram.json')
 
-	# load chik_log2 data
-	chik = json_scripts.load_to_dict('chik_log2.json')
-
-	print(chik['nodes'].keys())
+	# iniitalize row_class dictionary
+	row_class = {}
 
 	# loop through the gene rows
 	for inst_gene in chik['nodes']['row']:
@@ -42,12 +43,32 @@ def check_chik_prot_class():
 			# check specific protein class
 			if inst_gene in gc[inst_class]:
 				print('gene '+ inst_gene + ' is a ' + inst_class)
-		# print(inst_gene)
+
+				# add gene class to dictionary 
+				row_class[inst_gene] = inst_class
+
+		# if there is no protein class then set to other
+		if inst_gene not in row_class:
+			row_class[inst_gene] = 'other'
+
+	return row_class
 
 
+def check_col_class(cols):
+
+	col_class = {}
+	for inst_col in cols:
+
+		if 'lysate' in inst_col:
+
+			col_class[inst_col] = 'lysate'
+		else:
+			col_class[inst_col] = 'supnt'
+
+	return col_class
 
 # make chik_log2 clustergram
-def make_chik_log2_clust():
+def make_chik_log2_clust(inst_cutoff):
 	import json_scripts
 	import numpy as np
 	import d3_clustergram
@@ -72,13 +93,13 @@ def make_chik_log2_clust():
 
 	# filter the matrix to only include rows/cols that have
 	# values above a certain thresh n times 
-	chik['mat'], chik['nodes'] = d3_clustergram.filter_sim_mat(chik['mat'],chik['nodes'],0.25,2)
+	chik['mat'], chik['nodes'] = d3_clustergram.filter_sim_mat(chik['mat'],chik['nodes'],inst_cutoff,1)
 
 	print(chik['mat'].shape)
 
 	# define parameters
-	compare_cutoff = 0.01
-	min_num_compare = 3
+	compare_cutoff = 0.05
+	min_num_compare = 2
 
 	# cluster rows and columns 
 	print('calculating clustering')
@@ -88,10 +109,18 @@ def make_chik_log2_clust():
 
 	# write the d3_clustergram 
 	base_path = 'static/networks/'
-	full_path = base_path + 'example_network.json'
+	full_path = base_path + 'chik_cutoff_' + str(inst_cutoff) + '.json'
+
+	# add class information 
+	row_class = {}
+	col_class = {}
+
+	# add class information to the proteins 
+	row_class = check_chik_prot_class( chik )	
+	col_class = check_col_class( chik['nodes']['col'] )
 
 	# write the clustergram 
-	d3_clustergram.write_json_single_value( chik['nodes'], clust_order, chik['mat'], full_path)
+	d3_clustergram.write_json_single_value( chik['nodes'], clust_order, chik['mat'], full_path, row_class, col_class)
 
 
 # make multiple CCLE NSCLC expression clustergrams 
