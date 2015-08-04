@@ -31,7 +31,10 @@ def load_chikungunya_data():
 				# skip first column label (not a label)
 				if j > 0:
 
-					mat['nodes']['col'].append(inst_line[j])
+					# process the column names 
+					inst_label = inst_line[j].replace('|','').replace('Skeletal','').replace('Muscle','').replace('cell','').replace('expt','')
+
+					mat['nodes']['col'].append(inst_label)
 
 		else:
 

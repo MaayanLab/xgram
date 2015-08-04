@@ -14,6 +14,11 @@ def main():
 	# # make expression clustergrams 
 	# make_expression_clustergrams()
 
+
+	# process the data 
+	import process_chikungunya_kea
+	process_chikungunya_kea.load_chikungunya_data()
+
 	# make chik_log2 clustergram
 	make_chik_log2_clust()
 

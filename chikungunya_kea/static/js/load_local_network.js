@@ -100,8 +100,8 @@ function load_tfsub_clustergram(){
 		var arguments_obj = {
 			'network_data': network_data,
 			'svg_div_id': 'svg_div',
-			'row_label':'Kinases',
-			'col_label':'Transcription Factors',
+			'row_label':'Chapters',
+			'col_label':'Characters		',
 		  'outer_margins': outer_margins,
 		  'input_domain':1.5
 		};

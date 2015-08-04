@@ -67,7 +67,8 @@ function initialize_visualization(network_data, params){
   params.norm_label = {};
   params.norm_label.width = {};
   params.norm_label.width.row = label_scale(row_max_char);
-  params.norm_label.width.col = 0.8* label_scale(col_max_char);
+  //!! changing for extra long labels
+  params.norm_label.width.col = 1.3* label_scale(col_max_char);
   // normal label margins 
   params.norm_label.margin = {};
   params.norm_label.margin.left = params.grey_border_width + params.super_label_width;
@@ -107,7 +108,7 @@ function initialize_visualization(network_data, params){
   // the visualization dimensions can be smaller than the svg
   // if there are not many rows the clustergram width will be reduced, but not the svg width 
   //!! needs to be improved 
-  var prevent_col_stretch = d3.scale.linear().domain([1,20]).range([0.05,1]).clamp('true');
+  var prevent_col_stretch = d3.scale.linear().domain([1,20]).range([1,1]).clamp('true');
 
   // clust_dim - clustergram dimensions (the clustergram is smaller than the svg)
   params.clust.dim = {};
@@ -390,8 +391,6 @@ function make_d3_clustergram(args) {
     
   // row groups - only add if the rows have a group attribute 
   if ( _.has(row_nodes[0],'group') == true || _.has(col_nodes[0],'group') ){
-
-
 
     // initialize group colors 
     /////////////////////////
@@ -704,12 +703,13 @@ function make_d3_clustergram(args) {
   row_triangle_ini_group
     .append('path')
     .attr('d', function(d) { 
+      // removed border width
       var origin_x = params.class_room.symbol_width - 1;
-      var origin_y = params.border_width;
+      var origin_y = 0 ;//params.border_width;
       var mid_x  = 1;
       var mid_y  =  params.y_scale.rangeBand()/2 ;
       var final_x  =  params.class_room.symbol_width - 1;
-      var final_y  =  params.y_scale.rangeBand() - params.border_width ;
+      var final_y  =  params.y_scale.rangeBand() ; // - params.border_width ;
       var output_string = 'M '+origin_x+','+origin_y+' L ' + mid_x + ',' + mid_y + ', L ' + final_x + ','+final_y+' Z';
       return output_string;
      })
