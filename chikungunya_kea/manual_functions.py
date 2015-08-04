@@ -14,19 +14,49 @@ def main():
 	# # make expression clustergrams 
 	# make_expression_clustergrams()
 
+	# # chik specific code 
+	# #########################
+	# # make chik_log2 clustergram
+	# make_chik_log2_clust()
 
-	# process the data 
-	import process_chikungunya_kea
-	process_chikungunya_kea.load_chikungunya_data()
+	# check protein class of diff proteins 
+	check_chik_prot_class()
 
-	# make chik_log2 clustergram
-	make_chik_log2_clust()
+def check_chik_prot_class():
+	import json_scripts
+
+	# load gene class information from harmonogram 
+	gc = json_scripts.load_to_dict('gene_classes_harmonogram.json')
+
+	# load chik_log2 data
+	chik = json_scripts.load_to_dict('chik_log2.json')
+
+	print(chik['nodes'].keys())
+
+	# loop through the gene rows
+	for inst_gene in chik['nodes']['row']:
+
+		# check all protein classes 
+		for inst_class in gc:
+
+			# check specific protein class
+			if inst_gene in gc[inst_class]:
+				print('gene '+ inst_gene + ' is a ' + inst_class)
+		# print(inst_gene)
+
+
 
 # make chik_log2 clustergram
 def make_chik_log2_clust():
 	import json_scripts
 	import numpy as np
 	import d3_clustergram
+
+	# # only run once 
+	# ################
+	# # process the data 
+	# import process_chikungunya_kea
+	# process_chikungunya_kea.load_chikungunya_data()
 
 	# quick attempt to fix recursion error
 	import sys

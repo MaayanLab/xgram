@@ -42,7 +42,7 @@ function initialize_visualization(network_data, params){
   var min_num_char = 5;
   var max_num_char = 60;
   var min_label_width = 60;
-  var max_label_width = 180;
+  var max_label_width = 200;
   var label_scale = d3.scale.linear().domain([min_num_char,max_num_char]).range([min_label_width,max_label_width]).clamp('true');
 
   // Nomal Labels 
@@ -67,8 +67,7 @@ function initialize_visualization(network_data, params){
   params.norm_label = {};
   params.norm_label.width = {};
   params.norm_label.width.row = label_scale(row_max_char);
-  //!! changing for extra long labels
-  params.norm_label.width.col = 1.3* label_scale(col_max_char);
+  params.norm_label.width.col = 0.8* label_scale(col_max_char);
   // normal label margins 
   params.norm_label.margin = {};
   params.norm_label.margin.left = params.grey_border_width + params.super_label_width;

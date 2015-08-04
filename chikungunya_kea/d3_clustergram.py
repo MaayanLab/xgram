@@ -1,6 +1,6 @@
 # d3_clustergram.py has functions that will generate a d3 clustergram 
 
-def write_json_single_value(nodes, clust_order, mat, full_path, targets = [], evi = {}):
+def write_json_single_value(nodes, clust_order, mat, full_path, link_hl = {}):
 	import json
 	import json_scripts
 	import d3_clustergram
@@ -39,13 +39,6 @@ def write_json_single_value(nodes, clust_order, mat, full_path, targets = [], ev
 		# add class information 
 		inst_dict['class'] = str(round(random.random()))
 
-		# check if gene is in target 
-		if len(targets) > 0:
-			# check if row gene is a 'target' of tf, kin, etc 
-			if nodes['row'][i] in targets:
-				inst_dict['target'] = 1
-			else:
-				inst_dict['target'] = 0
 
 		# append dictionary 
 		d3_json['row_nodes'].append(inst_dict)
@@ -82,24 +75,19 @@ def write_json_single_value(nodes, clust_order, mat, full_path, targets = [], ev
 				inst_dict['target'] = j
 				inst_dict['value'] = mat[i,j]
 
-				# is there evidence of these two interacting 
-				# initailize with no evidence 
+				# initailize with no highlight
 				inst_dict['highlight'] = 0
 
-				# add evidence if necessary 
-				if len(evi) > 0:
-					# check if transcription factor has known targets 
-					if nodes['col'][j] in evi:
+				# add highlight if necessary 
+				if len(link_hl) > 0:
+					# check highlight
+					if nodes['col'][j] in link_hl:
 						# check if gene is a known target of the transcription factor 
-						if nodes['row'][i] in evi[nodes['col'][j]]:
+						if nodes['row'][i] in link_hl[nodes['col'][j]]:
 
-							# highlight - in this case its evidence for link 
+							# highlight 
 							inst_dict['highlight'] = 1
 							
-							print('found evidence')
-
-				#!! add evidence if necessary 
-
 				d3_json['links'].append( inst_dict )
 
 	# write json 
