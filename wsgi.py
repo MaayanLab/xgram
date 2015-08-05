@@ -1,1 +1,1 @@
-from chikungunyaKEA.app import app as application
+from ChikungunyaUSAMRIID.app import app as application

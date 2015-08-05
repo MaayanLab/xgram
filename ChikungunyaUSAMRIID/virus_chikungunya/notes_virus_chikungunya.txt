@@ -71,3 +71,7 @@ Avi Requests - 8-5-2015
 
 	Collagen Notes 
 		Collagens are the most abundant proteins in mammals. The collagen family (ref: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3003457/) comprses 28 members that contain at least one triple-helical domain. Collagens are deposited in the extracellular matrix where most of them form supramolecular aassemblies. ... Collagens play structural roles and contribute to mechanical properties, organization, and shape of tiessues. They interact with cells via several receptor families and regulate their proliferation, mugration ... 
+
+Change Name 8-5-2015
+	Change the name to: ChikungunyaUSAMRIID (from chikungunyaKEA). Also add in links to Qiaonan's drug predictions and change the upper left paragraph. 
+	
