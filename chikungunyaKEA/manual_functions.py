@@ -16,14 +16,99 @@ def main():
 
 	# chik specific code 
 	#########################
-	# make chik_log2 clustergram
-	cutoffs = [0.0,0.25,0.5, 0.75,1.0]
-	# cutoffs = [1.0]
-	for inst_cutoff in cutoffs:
-		make_chik_log2_clust(inst_cutoff)
 
-	# # check protein class of diff proteins 
-	# check_chik_prot_class()
+	# make chik_log2 clustergram
+	################################
+	# cutoffs = [0.0,0.25,0.5, 0.75,1.0]
+	# # cutoffs = [1.0]
+	# for inst_cutoff in cutoffs:
+	# 	make_chik_log2_clust(inst_cutoff)
+
+	# get chik up/dn lists 
+	get_chik_updn_lists()
+
+def get_chik_updn_lists():
+	import json_scripts
+	import numpy as np
+	import d3_clustergram
+
+	# load chik_log2 data and convert to array
+	chik = json_scripts.load_to_dict('chik_log2.json')
+	chik['mat'] = np.asarray(chik['mat'])
+
+	# apply log2 cutoff of 1 
+	inst_cutoff = 1
+
+	# temporarily replace nans with zeros
+	print('replace nans with zeros')
+	chik['mat'] = np.nan_to_num(chik['mat'])
+
+	# filter the matrix to only include rows/cols that have
+	# values above a certain thresh n times 
+	chik['mat'], chik['nodes'] = d3_clustergram.filter_sim_mat(chik['mat'],chik['nodes'],inst_cutoff,1)
+
+	print(chik['nodes']['row'])
+	print(len(chik['nodes']['row']))
+
+	print('\n\n')
+	print(chik['mat'].shape)
+	print('\n\n')
+
+	# find keratins
+	chick_lists = {}
+	chick_lists['keratin'] = []
+	chick_lists['collagen'] = []
+	chick_lists['up'] = []
+	chick_lists['dn'] = []
+	for i in range(len(chik['nodes']['row'])):
+
+		inst_gene = chik['nodes']['row'][i]
+
+		# get the protein level for each gene
+		inst_value = chik['mat'][i,:]
+		inst_mean = np.nanmean(inst_value)
+
+		# collect keratins: dn 
+		if 'KRT' in inst_gene:
+			chick_lists['keratin'].append(inst_gene)
+			# print( inst_gene + '\t' + str(inst_mean) )
+
+		# collect collagens: up 
+		if 'COL' in inst_gene:
+			chick_lists['collagen'].append(inst_gene)
+			# print( inst_gene + '\t' + str(inst_mean) )
+
+		# collect up regulated genes 
+		if inst_mean > 0 :
+			chick_lists['up'].append(inst_gene)
+			# print( 'up\t' + inst_gene + '\t' + str(inst_mean) )
+
+		# collect dn regulated genes 
+		if inst_mean < 0 :
+			chick_lists['dn'].append(inst_gene)
+			# print( 'dn\t' + inst_gene + '\t' + str(inst_mean) )
+
+	# export lists to document 
+	filename = 'chikungunya_lists.txt'
+	fw = open(filename, 'w')
+
+	# export all lists 
+	for inst_key in chick_lists:
+
+		# get list 
+		inst_list = chick_lists[inst_key]
+
+		# write list name 
+		fw.write(inst_key +'\n')
+
+		# write list components
+		for inst_gene in inst_list:
+			fw.write(inst_gene+'\n')
+
+		fw.write('\n\n')
+
+	fw.close()
+
 
 def check_chik_prot_class(chik):
 	import json_scripts

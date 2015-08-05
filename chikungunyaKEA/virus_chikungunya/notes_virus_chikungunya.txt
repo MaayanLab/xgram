@@ -21,3 +21,6 @@ keratins and collagens
 
 PPI interaction 
 	I could make a PPI visualization of the up/dn consensus (use similar procedure to Zichen) proteins to see which commonly up/dn regulated proteins are potentially functionally related to eachother (based on mutual binding).
+
+Avi Requests - 8-5-2015 
+	Deploy website with proteomics data views. Send lists of up/dn genes to l1000cds2. Make 1 page write up (use Zichen's data). 
