@@ -310,7 +310,7 @@ li{
 #toggle a:link, a:visited {
     display: inline-block;
     font-weight: bold;
-    color: black;
+    /*color: black;*/
     background-color: #C8C8C8;
     width: 120px;
     text-align: center;

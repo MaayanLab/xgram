@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <base href='/ChikungunyaUSAMRIID/'>
 
-    <title>Chikungunya KEA</title>
+    <title>Chikungunya USAMRIID</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="static/lib/css/bootstrap.css" rel="stylesheet">
@@ -86,14 +86,26 @@
 
               <div id='gene_exp_view' class='row'>
                 <div id='clust_instruct_container' >
-                  <h1 id='viz_website_title' >Chikungunya KEA</h1>
+                  <h1 id='viz_website_title' >Chikungunya-USAMRIID</h1>
 
                   <div id='viz_gmt_labels'></div>
 
                   <div class='title_viz_instructs'>About:</div>
-                  <div class='viz_instruct_text'> The clustergram shows log2 normalized proteomics data from the 12 samples and the initail view applies a log2 cutoff of 1 (this can be adjusted using the buttons). A dendrogram-like colorbar shows row/col groups and be adjusted using the sliders. The clustergram can reordered using the buttons or by clicking row/col title. </div>
+                  <div class='viz_instruct_text'> 
 
-                  <div class='viz_instruct_text'> The lysate and supnt samples cluster separately (note the triangle color of column labels). Reordering the clustergram by rank shows commonly up/down regulated proteins. Several collagens and collagen interacting proteins (FN1, fibronectin) are commonly up-reglated and several keratins are commonly down-regulated. 
+                  TThe clustergram shows log2 normalized proteomics data from the 12 samples. The initial view applies a log2 cutoff of 1, but this can be adjusted with the buttons. A dendrogram-like colorbar shows row/col groups. These can be adjusted using the sliders. The clustergram can be reordered using the Rank button or by clicking row/col titles.
+
+                  </div>
+
+                  <div class='viz_instruct_text'> 
+
+                  We noticed that several collagens and collagen interacting proteins such as fibronectin are commonly up-regulated, and several keratins are commonly down-regulated. Searching for L1000 LINCS drugs that can turn on the expression of the keratin while suppressing the expression of the collagens was done in three ways: 
+
+                  <a href="http://amp.pharm.mssm.edu/L1000CDS2/#/result/55c246e817c56aef005aeb29" target='_blank'>up/down proteins</a>, 
+                  <a href="http://amp.pharm.mssm.edu/L1000CDS2/#/result/55c2469e17c56aef005aeb27" target='_blank'>up/down collagens and keratins identified in the samples</a>, and 
+                  <a href="http://amp.pharm.mssm.edu/L1000CDS2/#/result/55c252e317c56aef005aeb31" target='_blank'>all known human collagens and keratins</a>. The most consistent drugs across all these analyses are 
+                  <a href="http://pubchem.ncbi.nlm.nih.gov/compound/285033" target='_blank'>homoharringtonine</a> and <a href="http://pubchem.ncbi.nlm.nih.gov/compound/73707397" target='_blank'>BJM-ctd2-9</a>.
+ 
                   </div>
 
                   <!-- button container -->
@@ -246,7 +258,7 @@
   <footer id='footer_div' class="footer navbar-fixed-bottom">
     <div class="row" > 
       <div class="col-xs-12 footer_section"> 
-        <p class="text-muted">Chikungunya KEA is being developed by the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a>. </p>
+        <p class="text-muted">Chikungunya USAMRIID is being developed by the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a>. </p>
       </div>
     </div>
   </footer>
