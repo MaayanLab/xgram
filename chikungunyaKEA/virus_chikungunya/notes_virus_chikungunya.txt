@@ -24,3 +24,50 @@ PPI interaction
 
 Avi Requests - 8-5-2015 
 	Deploy website with proteomics data views. Send lists of up/dn genes to l1000cds2. Make 1 page write up (use Zichen's data). 
+
+	I did two queries using l1000cds2 
+
+	l1000cds2 links 
+		collagen up and keratin dn: http://amp.pharm.mssm.edu/L1000CDS2/#/result/55c2469e17c56aef005aeb27
+		up/dn lists: http://amp.pharm.mssm.edu/L1000CDS2/#/result/55c246e817c56aef005aeb29
+
+		There are a few drugs that show up with both searches 
+			BJM-ctd2-9
+			Homoharringtonine
+
+	Keratin and Collagen lists
+
+		collagen
+			COL1A1 
+			COL1A2
+			COL5A1
+			COL6A1
+			COL6A3	
+
+		keratin 
+			Type I - Human epithelial keratins 
+				KRT10	
+				KRT13
+				KRT14
+				KRT17
+				KRT19
+				KRT9
+
+			Type II - Human epithelial keratins
+				KRT1 
+				KRT2
+				KRT5
+
+			Type I keratins are acidic low-molecular weight proteins, while Type II keratins are basic or neutral high molecular weight proteins. 
+
+		All of the keratins are epithelial keratins (none are hair).
+
+	Keratin notes:	
+		The first sequences of keratins revealed that keratins could be groupled into two categories based on their sequence homologies - type I and type II keratins. 
+
+		Type1 keratins are cytokeratins that constitute the type 1 intermediate filaments of the intracytoplasmic cytoskeleton, which is present in all mammalian epithelial cells. Most of the type 1 keratins consist of acidic, low molecular weight proteins, which in vivo are arranged in pairs of heterotypic Type I and Type II keratin chains, coexpressed during differentiation of simple and stratified epithelial tissues. 
+
+		Type2 keratins constitutes the type II intermediate filaments of the intracytyplasimc cytoskeleton, which is present in all mammalian epithelial cells. Thye 2 cytokeratins consist of basic or neurtal, high molecular weight proteins, which in vivo are arrange in pairs of hetrotypic type I and type II keratin chains, coexpressed iduring differentitation of simple and stratified epithelial tissues. 
+
+	Collagen Notes 
+		Collagens are the most abundant proteins in mammals. The collagen family (ref: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3003457/) comprses 28 members that contain at least one triple-helical domain. Collagens are deposited in the extracellular matrix where most of them form supramolecular aassemblies. ... Collagens play structural roles and contribute to mechanical properties, organization, and shape of tiessues. They interact with cells via several receptor families and regulate their proliferation, mugration ... 
