@@ -83,7 +83,7 @@ function load_chik_cutoff(inst_cutoff){
 		    } });
 
 	//!! temporary change to test similarity matrix 
-	d3.json('/chikungunya_kea/static/networks/chik_cutoff_'+inst_cutoff+'.json', function(network_data){
+	d3.json('/chikungunyaKEA/static/networks/chik_cutoff_'+inst_cutoff+'.json', function(network_data){
 
 
 		// new way of making clustergram 
@@ -136,7 +136,7 @@ function load_new_clustergram(){
 		    } });
 
 	// use d3 to load a json 
-	d3.json('/chikungunya_kea/static/networks/'+ccle_params['gc'].toLowerCase()+'_exp_std_'+ccle_params['cutoff']+'.json', function(network_data){
+	d3.json('/chikungunyaKEA/static/networks/'+ccle_params['gc'].toLowerCase()+'_exp_std_'+ccle_params['cutoff']+'.json', function(network_data){
 
 
 	var col_nodes = network_data.col_nodes;

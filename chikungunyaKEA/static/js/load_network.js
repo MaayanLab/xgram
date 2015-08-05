@@ -1,6 +1,6 @@
 
 // load network 
-d3.json('/chikungunya_kea/static/networks/tf_exp_std_3.5.json', function(network_data){
+d3.json('/chikungunyaKEA/static/networks/tf_exp_std_3.5.json', function(network_data){
 
 	// define the outer margins of the visualization 
 	var outer_margins = {

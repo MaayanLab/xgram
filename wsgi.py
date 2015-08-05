@@ -1,1 +1,1 @@
-from chikungunya_kea.app import app as application
+from chikungunyaKEA.app import app as application
