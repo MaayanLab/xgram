@@ -507,7 +507,7 @@ because the sidebar will be closed*/
   /*set up fixed positions*/
   position:absolute;
   /*reduce sidebar width - used to ge 245px*/
-  width:200px;
+  width:215px;
   /*needs to be improved !!*/
   /*margin-left: 5px;*/
   padding-right: 0px;

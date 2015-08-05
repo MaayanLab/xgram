@@ -23,11 +23,11 @@ ENTRY_POINT = '/ChikungunyaUSAMRIID'
 # docker_vs_local
 ##########################################
 
-# for local development 
-SERVER_ROOT = os.path.dirname(os.getcwd()) + '/ChikungunyaUSAMRIID/ChikungunyaUSAMRIID' ## original 
+# # for local development 
+# SERVER_ROOT = os.path.dirname(os.getcwd()) + '/ChikungunyaUSAMRIID/ChikungunyaUSAMRIID' ## original 
 
-# # for docker development
-# SERVER_ROOT = '/app/ChikungunyaUSAMRIID'
+# for docker development
+SERVER_ROOT = '/app/ChikungunyaUSAMRIID'
 
 
 @app.route(ENTRY_POINT + '/<path:path>') ## original 

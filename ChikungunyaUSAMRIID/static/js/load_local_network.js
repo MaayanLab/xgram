@@ -92,8 +92,8 @@ function load_chik_cutoff(inst_cutoff){
 		var outer_margins = {
 		    'top':10,
 		    'bottom':40,
-		    'left':180,
-		    'right':50
+		    'left':200,
+		    'right':45
 		  };
 
 		// define arguments object 
