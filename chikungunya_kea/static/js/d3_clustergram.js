@@ -1306,12 +1306,15 @@ function highlight_resource_types(params){
 
   // add color key 
   ////////////////////
+  // remove old row color key 
+  d3.selectAll('.row_color_key').remove();
   // add keys 
   var key_divs = d3.select('#res_color_key_div')
     .selectAll('row')
     .data(all_groups)
     .enter()
     .append('row')
+    .attr('class','row_color_key')
     .style('padding-top','15px');
 
   // add color 

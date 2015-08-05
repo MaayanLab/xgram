@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <base href='/chikungunya_kea/'>
 
-    <title>CSTgram</title>
+    <title>Chikungunya KEA</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="static/lib/css/bootstrap.css" rel="stylesheet">
@@ -86,14 +86,15 @@
 
               <div id='gene_exp_view' class='row'>
                 <div id='clust_instruct_container' >
-                  <h1 id='viz_website_title' onClick='to_homepage()' >Chikungunya</h1>
+                  <h1 id='viz_website_title' >Chikungunya KEA</h1>
 
                   <div id='viz_gmt_labels'></div>
 
                   <div class='title_viz_instructs'>About:</div>
-                  <div class='viz_instruct_text'> The clustergram shows gene expression data for 29 NSCLC cell lines available from the CCLE. Gene expression has been Z-sore normalized across all cancer cell lines in the CCLE (approximately 1000 cell lines in total). The initial view shows gene expression from all gene types that have a zscore absolute value of at least 3.5 in at least one cell line. You can switch the zscore cutoff and gene subtypes using the buttons. </div>
+                  <div class='viz_instruct_text'> The clustergram shows log2 normalized proteomics data from the 12 samples and the initail view applies a log2 cutoff of 1 (this can be adjusted using the buttons). A dendrogram-like colorbar shows row/col groups and be adjusted using the sliders. The clustergram can reordered using the buttons or by clicking row/col title. </div>
 
-                  <div class='viz_instruct_text'> Cell lines are broken into three groups based on transcription factor gene expression - labeled red, blue and gray. The blue cluster is characterized by low expression of SMARCA4 and the red cluster is characterized by increased expression of NKX2-1.</div>
+                  <div class='viz_instruct_text'> The lysate and supnt samples cluster separately (note the triangle color of column labels). Reordering the clustergram by rank shows commonly up/down regulated proteins. Several collagens and collagen interacting proteins (FN1, fibronectin) are commonly up-reglated and several keratins are commonly down-regulated. 
+                  </div>
 
                   <!-- button container -->
                   <div id='button_container'>
@@ -206,7 +207,7 @@
                   <div class='viz_instruct_text'>row group size</div>
                   <div id="slider_row"></div>
 
-                  <button id='to_homepage' type="submit" class='btn btn-primary buttons' onClick='to_homepage()' >Return to Homepage</button>
+                  <!-- <button id='to_homepage' type="submit" class='btn btn-primary buttons' onClick='to_homepage()' >Return to Homepage</button> -->
 
                 </div>
                 <!-- <div id='clustergram_container' > -->
@@ -245,7 +246,7 @@
   <footer id='footer_div' class="footer navbar-fixed-bottom">
     <div class="row" > 
       <div class="col-xs-12 footer_section"> 
-        <p class="text-muted">CSTgram is being developed by the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a>. </p>
+        <p class="text-muted">Chikungunya KEA is being developed by the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a>. </p>
       </div>
     </div>
   </footer>
@@ -350,9 +351,10 @@
 
   }
  
-  // transcription factor view 
-  function tf_sub_all_cl(){
+  // // transcription factor view 
+  // function tf_sub_all_cl(){
 
+    // run initially 
     d3.select('#gene_exp_view').style('display','block');
     d3.selectAll('#homepage_view').style('display','none');
     d3.select('#svg_div_exp').style('display','none');
@@ -373,7 +375,7 @@
 
     load_chik_cutoff('1.0');
 
-  }
+  // }
 
 
 
