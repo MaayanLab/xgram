@@ -87,6 +87,8 @@ def make_chik_log2_clust(inst_cutoff):
 	chik = json_scripts.load_to_dict('chik_log2.json')
 	chik['mat'] = np.asarray(chik['mat'])
 
+	print(len(chik['nodes']['row']))
+
 	# temporarily replace nans with zeros
 	print('replace nans with zeros')
 	chik['mat'] = np.nan_to_num(chik['mat'])

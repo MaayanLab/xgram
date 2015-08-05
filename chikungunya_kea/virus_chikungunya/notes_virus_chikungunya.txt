@@ -5,3 +5,10 @@ notes virus chikungunya
 
 making website - 8-3-2015
 	Going to make website with view of original data and enriched kinases. 
+
+keratins and collagens	
+	keratins are down-regulated and collagens are up-regulated. 
+
+	FN1, fibronectin, binds the cell surfaces and various compounds including collagen, fibrin, ... (connected to collagen and up-regulated)
+
+	TGFBI, transforming growth factor-beta-induced protein igH3. Binds to type 1, 2, and 4 collagens. This adjesion protein may play an important role in cell-collagen interactions. In cartlage, may be involved in endochondral bone formation. 

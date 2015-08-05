@@ -600,7 +600,7 @@ because the sidebar will be closed*/
   margin: 0 auto;
   color:#333;
   text-align: left;
-  margin-top: 5px;
+  margin-top: 10px;
   /*padding-top:5px;*/
   /*margin-bottom: 5px;*/
   font-size: 17px;
@@ -767,12 +767,13 @@ look like the input gene list text title*/
 
 /*initialize the title of res key*/
 #res_color_key_title{
-  display: none;
+  /*display: none;*/
 }
 
 /*div holding res color key */
 #res_color_key_div{
   margin-top: 0px;
+  margin-left:10px;
   /*set height so that the elements below
   will be placed correctly*/
   height: 50px;
@@ -794,7 +795,7 @@ look like the input gene list text title*/
 
 /*container for gene search box*/
 #gene_search_container{
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   /*needed for some reason*/
   margin-left: 0px;
   display: none:;
