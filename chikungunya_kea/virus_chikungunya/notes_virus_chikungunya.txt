@@ -12,3 +12,12 @@ keratins and collagens
 	FN1, fibronectin, binds the cell surfaces and various compounds including collagen, fibrin, ... (connected to collagen and up-regulated)
 
 	TGFBI, transforming growth factor-beta-induced protein igH3. Binds to type 1, 2, and 4 collagens. This adjesion protein may play an important role in cell-collagen interactions. In cartlage, may be involved in endochondral bone formation. 
+
+	SPARC: appears to retulate cell growth through interactions with the extracellular matrix and cutokines. Binds calcium and copper, several types of collagen ... 
+
+	- mechanism
+	------------
+	There is always the possibility that the reason that there is some discrepancy in the measured value of some protein (potentially large extracellular proteins) might be due to the separation process - lysate and supernatent.
+
+PPI interaction 
+	I could make a PPI visualization of the up/dn consensus (use similar procedure to Zichen) proteins to see which commonly up/dn regulated proteins are potentially functionally related to eachother (based on mutual binding).
