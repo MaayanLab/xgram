@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <base href='/xgram/'>
+
+    <title>D3 Clustergram</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/lib/css/bootstrap.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="static/css/custom.css" rel="stylesheet">
+    <!-- for jquery sliders -->
+    <link href="static/lib/css/jquery-ui.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- clust instruct container -->
+  <div id='clust_instruct_container' >
+
+    <h1 id='viz_website_title'>D3 Clustergram</h1>
+
+    <div id='viz_gmt_labels'></div>
+
+    <div id='title_viz_instruct_text'>About:</div>
+    <div class='viz_instruct_text'> Zoom into the clustergram using scroll. Reorder the clustergram using the toggle buttons or by double-clicking rows or columns. Double-click the clustergram to programatically reset zoom/panning.  Search for a gene to zoom into the matrix. Change the size of row/colum groups by moving the sliders. Click on row/column groups. See README for more information.</div>
+    <div class='viz_instruct_text'> D3 Clustergram is developed by Nick Fernandez at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a> in the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> a <a href="http://lincs-dcic.org/">DCIC BD2K-LINCS</a> center. </div>
+
+    <!-- toggle clustergram order -->
+    <div id='toggle_order' class="btn-group" data-toggle="buttons" >
+      <label class="btn btn-primary active order_name">
+        <input type="radio" name="options" id="clust_button" autocomplete="off" checked > Cluster
+      </label>
+      <label class="btn btn-primary order_name">
+        <input type="radio" name="options" id="rank_button" autocomplete="off" > Rank
+      </label>
+      <label class="btn btn-primary order_name">
+        <input type="radio" name="options" id="class_button" autocomplete="off" > Class
+      </label>
+    </div>
+
+    <!-- input box for gene search -->
+    <div id='gene_search_container' class='row'>
+        <input id='gene_search_box' type="text" class="form-control" placeholder="Input Gene" aria-describedby="sizing-addon2">
+        <div id='gene_search_button' class="btn-group" data-toggle="buttons" >
+          <label id='submit_gene_button' class="btn btn-primary active">
+            <input type="radio" name="options" id="" autocomplete="off" checked > Search
+          </label>
+        </div>
+    </div>
+    <p>set column group size</p>
+    <div id="slider_col"></div>
+    <p>set row group size</p>
+    <div id="slider_row"></div>
+
+  </div>
+  <!-- end clust instruct container -->
+
+  <!-- svg_div - visualization will be put here -->
+  <div id='svg_div' class='svg_div' ></div>
+
+
+  <!-- footer -->
+  <footer id='footer_div' class="footer navbar-fixed-bottom">
+    <div class="row" > 
+      <div class="col-xs-12 footer_section"> 
+        <p class="text-muted">D3 Clustergram is being developed by the <a href="http://icahn.mssm.edu/research/labs/maayan-laboratory">Ma'ayan Lab</a> at the <a href="http://icahn.mssm.edu/">Icahn School of Medicine at Mount Sinai</a>. </p>
+      </div>
+    </div>
+  </footer>
+  <!-- end footer -->
+
+  <!-- Required JS Libraries -->
+  <script src="static/lib/js/d3.js"></script>
+  <script src="static/lib/js/jquery-1.11.2.min.js"></script>
+  <script src="static/lib/js/jquery-ui.js"></script>
+  <script src="static/lib/js/bootstrap.min.js"></script>
+  <script src="static/lib/js/underscore-min.js"></script>
+  <script src="static/lib/js/underscore.strings.js"></script>
+
+  <!-- clustergram.js -->
+  <script src='static/js/d3_clustergram.js'></script>
+  <!-- load clustergram -->
+  <script src='static/js/load_clustergram.js'></script>
+
+
+</body>
+
+</html>

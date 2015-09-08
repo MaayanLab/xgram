@@ -1,6 +1,0 @@
-
-FN1	0.144046369617	0.875671864998	0.22897256976	1.11403524325	nan	nan	0.407363571393	nan	0.169744675832	nan	0.215914857265	nan
-FN1	nan	nan	nan	nan	0.167357927739	0.739372091873	nan	nan	nan	1.07096652135	nan	nan
-FN1	nan	nan	nan	nan	nan	nan	0.394031641159	nan	nan	nan	nan	nan
-FN1	nan	nan	nan	nan	nan	nan	nan	1.13923579737	nan	nan	nan	0.965784284662
-FN1	nan	nan	nan	nan	nan	0.7249929525	nan	nan	nan	nan	nan	nan
